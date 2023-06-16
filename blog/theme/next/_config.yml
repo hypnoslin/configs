@@ -338,8 +338,8 @@ calendar:
 # Set the text alignment in posts / pages.
 text_align:
   # Available values: start | end | left | right | center | justify | justify-all | match-parent
-  desktop: justify
-  mobile: justify
+  desktop: left
+  mobile: left
 
 # Reduce padding / margin indents on devices with narrow width.
 mobile_layout_economy: false
@@ -379,7 +379,7 @@ back2top:
 
 # Reading progress bar
 reading_progress:
-  enable: false
+  enable: true
   # Available values: top | bottom
   position: top
   color: "#37c6c0"
@@ -396,8 +396,8 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
+  enable: true
+  permalink: https://github.com/hypnoslin
   title: Follow me on GitHub
 
 
@@ -435,13 +435,13 @@ font:
   title:
     external: true
     family: Cambria
-    size: 2
+    size: 1.8
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
     family: Cambria
-    size: 1
+    size: 1.5
 
   # Font settings for posts (.post-body).
   posts:
@@ -588,8 +588,8 @@ comments:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: albert-lins-blog
   count: true
   #post_meta_order: 0
 
@@ -677,7 +677,7 @@ add_this_id:
 
 # Google Analytics
 google_analytics:
-  tracking_id: # <app_id>
+  tracking_id: G-0K7NVG4ZCN
   # By default, NexT will load an external gtag.js script on your site.
   # If you only need the pageview feature, set the following option to true to get a better performance.
   only_pageview: false
@@ -746,7 +746,7 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -755,7 +755,7 @@ local_search:
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.
-  preload: false
+  preload: true
 
 # Swiftype Search API Key
 swiftype_key:
