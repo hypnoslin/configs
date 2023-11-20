@@ -99,10 +99,21 @@ fi
 #if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 #    . /etc/bash_completion
 #fi
+
+# Cursor
+echo -ne "\e[1 q"            # Cusor blink
+printf '\e]12;#696969\007'   # Cursor gray
+
+# Prompt
+parse_git_branch() {
+	 git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]@\[\033[01;34m\]thinkbook\[\033[00m\]:\[\033[01;31m\]\W$(parse_git_branch)\[\033[00m\]\$ '
+
+# Vim
 export SVN_EDITOR="vim"
 export EDITOR="vim"
-export PATH="/home/albertlin/AMI/tools/MDS/spx/utils/BuildPRJ/:$PATH"
-export PATH="/home/albertlin/AMI/tools/MDS:$PATH"
 
 # Albert Edition
 alias bcompare='QT_GRAPHICSSYSTEM=native bcompare'
@@ -111,3 +122,7 @@ alias bcompare='QT_GRAPHICSSYSTEM=native bcompare'
 alias obmc-configs='
 sed -i "1 i\SSTATE_DIR ?= \"/share/mounted/sstate-cache\"" conf/local.conf &&
 sed -i "1 i\DL_DIR ?= \"/share/mounted/downloads\"" conf/local.conf'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
