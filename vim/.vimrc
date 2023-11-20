@@ -501,5 +501,7 @@ endif
 "noremap <Leader>Y "+y
 "noremap <Leader>P "+p
 
-"set clipboard=unnamedplus
-set clipboard=unnamed
+" On Linux
+set clipboard=unnamedplus
+" On macOS and Windows
+"set clipboard=unnamed
