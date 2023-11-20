@@ -105,11 +105,11 @@ echo -ne "\e[1 q"            # Cusor blink
 printf '\e]12;#696969\007'   # Cursor gray
 
 # Prompt
-parse_git_branch() {
+get_git_branch() {
 	 git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]@\[\033[01;34m\]thinkbook\[\033[00m\]:\[\033[01;31m\]\W$(parse_git_branch)\[\033[00m\]\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]@\[\033[01;34m\]thinkbook\[\033[00m\]:\[\033[01;31m\]\W$(get_git_branch)\[\033[00m\]\$ '
 
 # Vim
 export SVN_EDITOR="vim"
@@ -122,6 +122,29 @@ alias bcompare='QT_GRAPHICSSYSTEM=native bcompare'
 alias obmc-configs='
 sed -i "1 i\SSTATE_DIR ?= \"/share/mounted/sstate-cache\"" conf/local.conf &&
 sed -i "1 i\DL_DIR ?= \"/share/mounted/downloads\"" conf/local.conf'
+
+# openBMC unit test
+# Retrieve git branch name
+
+function ciTest
+{
+    REPO=$(basename `pwd`)
+    REPO_BRANCH=$(echo $(get_git_branch) | sed 's/^(\(.*\))$/\1/')
+    read -p "Run CI against '${REPO}(${REPO_BRANCH})' repo? " -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]];
+    then
+        #WORKSPACE=$(pwd) UNIT_TEST_PKG="apps/lenovo/" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
+        WORKSPACE=$(pwd) UNIT_TEST_PKG="./entity-manager" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
+    fi
+}
+
+# Meson
+export PATH="/home/albertlin/.local/bin:$PATH"
+
+# Docker Build Script
+cacheBuild () {
+	./dockerbuild.sh -m $1 -s /share/mounted/sstate-cache/ -d /share/mounted/downloads/
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
