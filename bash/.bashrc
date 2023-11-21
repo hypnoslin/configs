@@ -134,7 +134,8 @@ function ciTest
     if [[ $REPLY =~ ^[Yy]$ ]];
     then
         #WORKSPACE=$(pwd) UNIT_TEST_PKG="apps/lenovo/" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
-        WORKSPACE=$(pwd) UNIT_TEST_PKG="./entity-manager" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
+        #WORKSPACE=$(pwd) UNIT_TEST_PKG="./entity-manager" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
+        WORKSPACE=$(pwd) UNIT_TEST_PKG="./sdbusplus" BRANCH="${REPO_BRANCH}" ./openbmc-build-scripts/run-unit-test-docker.sh
     fi
 }
 
@@ -146,6 +147,9 @@ cacheBuild () {
 	./dockerbuild.sh -m $1 -s /share/mounted/sstate-cache/ -d /share/mounted/downloads/
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NodeJs installation script
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
