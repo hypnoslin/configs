@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCSessions Version="1" MinVersion="1">
+	<TSessionFolder>
+		<Items>
+			<TSessionFolder>
+				<Items>
+					<TTextCompareSession Value="cec1736_i2c_proxy.hpp">
+						<LastModified Value="2023-12-01 18:46:43"/>
+						<Specs>
+							<Left Value="/home/albertlin/Lenovo/build/openbmc/1123/thinksystem-bmc/apps/lenovo/pfrd/src/controllers/proxy/cec1736_i2c_proxy.hpp"/>
+							<Right Value="/home/albertlin/Lenovo/build/openbmc/1123/thinksystem-bmc/apps/lenovo/pfrd/src/controllers/proxy/i2c/cec1736_i2c_proxy.hpp"/>
+						</Specs>
+					</TTextCompareSession>
+				</Items>
+			</TSessionFolder>
+		</Items>
+	</TSessionFolder>
+</BCSessions>
