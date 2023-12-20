@@ -120,14 +120,20 @@ alias bcompare='QT_GRAPHICSSYSTEM=native bcompare'
 
 # OpenBMC
 alias obmc-configs='
+sed -i "1 i\BB_NUMBER_THREADS = \"10\"" conf/local.conf &&
+sed -i "1 i\PARALLEL_MAKE = \"-j10\"" conf/local.conf &&
+sed -i "1 i\IMAGE_FSTYPES:remove = \"wic.xz\"" conf/local.conf &&
 sed -i "1 i\SSTATE_DIR ?= \"/share/mounted/sstate-cache\"" conf/local.conf &&
 sed -i "1 i\DL_DIR ?= \"/share/mounted/downloads\"" conf/local.conf'
+
+alias copyImage='cp tmp/deploy/images/bodie/obmc-phosphor-image-bodie.ext4.mmc.tar ~albertlin/share_folder/'
 
 # openBMC unit test
 # Retrieve git branch name
 
 function ciTest
 {
+    sudo ntpdate time.stdtime.gov.tw
     REPO=$(basename `pwd`)
     REPO_BRANCH=$(echo $(get_git_branch) | sed 's/^(\(.*\))$/\1/')
     read -p "Run CI against '${REPO}(${REPO_BRANCH})' repo? " -n 1 -r
