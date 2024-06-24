@@ -180,7 +180,7 @@ set clipboard=unnamedplus
 " ------------------------ Copy & Paste Setup ----------------------- "
 
 " ------------------------ Powerline -------------------------------- "
-" pip3 install powerline
+" pip3 install powerline-status
 " mkdir -p .config/powerline
 " cp -r ~/.vim/bundle/powerline/powerline/config_files/* ~/.config/powerline/
 python3 from powerline.vim import setup as powerline_setup
